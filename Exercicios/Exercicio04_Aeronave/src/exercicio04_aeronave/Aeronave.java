@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class Aeronave extends javax.swing.JFrame {
 
-    int valor = 0;
+    int altitude = 0;
     
     /**
      * Creates new form Aeronave
@@ -38,12 +38,12 @@ public class Aeronave extends javax.swing.JFrame {
         ligar.setText("Desligado");
         autorizarDecolar.setText("Não autorizado a decolar");
         checkList.setText("Sem checklist");
-        subir.setText("No aeroporto");
+        subir.setText(altitude + " mil pés");
         autorizarDescer.setText("Não autorizado");
-        descer.setText("Descer");
+        descer.setText(altitude + " mil pés");
         desligar.setText("Desligado");
         
-        resultado.setText(String.valueOf(valor));
+        resultado.setText(String.valueOf(altitude));
         
         atualizarResultado();
         
@@ -53,8 +53,12 @@ public class Aeronave extends javax.swing.JFrame {
     
     public void atualizarResultado(){
     
-      resultado.setText("Status da aeronave: " + ligar.getText()+"\nDecolar a aeronave: " + autorizarDecolar.getText() + "\nCheck List da aeronave: " 
-      + checkList.getText() + "\nIniciar vôo: " + subir.getText() + "\nAutorizar pouso: " + autorizarDescer.getText() + "\nPousando: " + descer.getText() + 
+      resultado.setText("Status da aeronave: " + ligar.getText()+
+      "\nDecolar a aeronave: " + autorizarDecolar.getText() + 
+      "\nChecklist: " + checkList.getText() + 
+      "\nAltitude do avião: " + subir.getText() + 
+        autorizarDescer.getText() + 
+      "\nPousando: " + descer.getText() + 
       "\nDesligar a aeronave: " + desligar.getText());
       
     }
@@ -209,9 +213,7 @@ public class Aeronave extends javax.swing.JFrame {
 
     private void botaoLigarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoLigarMouseClicked
         
-        if (ligar.getText().equals("Desligado") && autorizarDecolar.getText().equals("Não autorizado a decolar") &&
-           checkList.getText().equals("Sem checklist") && subir.getText().equals("No aeroporto") && autorizarDescer.getText()
-           .equals("Não autorizado") && descer.getText().equals("Descer") && desligar.getText().equals("Desligado")) {
+        if (ligar.getText().equals("Desligado")) {
         
             ligar.setText("Ligado");
            
@@ -223,9 +225,7 @@ public class Aeronave extends javax.swing.JFrame {
 
     private void botaoAutorizarDecolarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoAutorizarDecolarMouseClicked
         
-        if (ligar.getText().equals("Ligado") && autorizarDecolar.getText().equals("Não autorizado a decolar") &&
-           checkList.getText().equals("Sem checklist") && subir.getText().equals("No aeroporto") && autorizarDescer.getText()
-           .equals("Não autorizado") && descer.getText().equals("Descer") && desligar.getText().equals("Desligado")) {
+        if (checkList.getText().equals("Tudo certo para decolagem")) {
         
             autorizarDecolar.setText("Autorizado a decolar");
             
@@ -235,7 +235,7 @@ public class Aeronave extends javax.swing.JFrame {
         
         else {
         
-            JOptionPane.showMessageDialog(null, "O avião não está ligado");
+            JOptionPane.showMessageDialog(null, "O Cheklist ainda não foi feito");
         
         }
         
@@ -243,9 +243,7 @@ public class Aeronave extends javax.swing.JFrame {
 
     private void boataoCheckListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boataoCheckListMouseClicked
 
-        if (ligar.getText().equals("Ligado") && autorizarDecolar.getText().equals("Autorizado a decolar") &&
-           checkList.getText().equals("Sem checklist") && subir.getText().equals("No aeroporto") && autorizarDescer.getText()
-           .equals("Não autorizado") && descer.getText().equals("Descer") && desligar.getText().equals("Desligado")) {
+        if (ligar.getText().equals("Ligado")) {
         
             checkList.setText("Tudo certo para decolagem");
             
@@ -255,7 +253,7 @@ public class Aeronave extends javax.swing.JFrame {
         
         else {
         
-            JOptionPane.showMessageDialog(null, "O avião não está ligado" + "\n" + "e não foi feito o checklist");
+            JOptionPane.showMessageDialog(null, "O avião não está ligado.");
         
         }
         
@@ -263,11 +261,9 @@ public class Aeronave extends javax.swing.JFrame {
 
     private void boatoSubirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boatoSubirMouseClicked
         
-        if (ligar.getText().equals("Ligado") && autorizarDecolar.getText().equals("Autorizado a decolar") &&
-           checkList.getText().equals("Tudo certo para decolagem") && subir.getText().equals("No aeroporto") && autorizarDescer.getText()
-           .equals("Não autorizado") && descer.getText().equals("Descer") && desligar.getText().equals("Desligado")) {
+        if (autorizarDecolar.getText().equals("Autorizado a decolar") && altitude < 40) {
         
-            subir.setText("Subindo");
+            altitude = altitude + 10;
             
             atualizarResultado();
             
@@ -275,7 +271,7 @@ public class Aeronave extends javax.swing.JFrame {
         
         else {
         
-            JOptionPane.showMessageDialog(null, "O avião não está ligado" + "\n" + "e não foi feito o checklist" + "\n" + "O avião ainda está no aeroporto");
+            JOptionPane.showMessageDialog(null, "O avião não foi autorizado a decolar");
         
         }
         
