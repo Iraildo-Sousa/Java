@@ -165,6 +165,13 @@ public class Raquete extends javax.swing.JFrame {
         "\n");
         metodoBateria();
         
+        if (mostraCarregar.getText().equals("Descarregando") && carregar == 0) {
+            
+                mostraCarregar.setText("Descarregado");
+                mostraTotal();
+                
+            }
+        
     
     }
     
@@ -325,8 +332,18 @@ public class Raquete extends javax.swing.JFrame {
         
             mostraCarregar.setText("Descarregando");
                 mostraTotal();
-        
+                
+            
+                
         }
+       
+       /*if (mostraCarregar.getText().equals("Descarregando") && carregar < 10) {
+            
+                mostraCarregar.setText("Descarregado");
+                mostraTotal();
+                
+            }*/
+       
  
     }//GEN-LAST:event_botaoUsarRaqueteMouseClicked
 
