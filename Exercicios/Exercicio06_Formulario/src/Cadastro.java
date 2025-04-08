@@ -30,6 +30,7 @@ public class Cadastro extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCadastro = new javax.swing.JMenu();
         itemFormulario = new javax.swing.JMenuItem();
+        itemCadastro = new javax.swing.JMenuItem();
         menuInicio = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,6 +56,14 @@ public class Cadastro extends javax.swing.JFrame {
             }
         });
         menuCadastro.add(itemFormulario);
+
+        itemCadastro.setText("Cadastro de Pessoa");
+        itemCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemCadastroActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(itemCadastro);
 
         jMenuBar1.add(menuCadastro);
 
@@ -93,6 +102,16 @@ public class Cadastro extends javax.swing.JFrame {
         
     }//GEN-LAST:event_itemFormularioActionPerformed
 
+    private void itemCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCadastroActionPerformed
+        
+        CadastroPessoa table = new CadastroPessoa();
+       
+        painelPrincipal.add(table);
+        
+        table.setVisible(true);
+        
+    }//GEN-LAST:event_itemCadastroActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -129,6 +148,7 @@ public class Cadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem itemCadastro;
     private javax.swing.JMenuItem itemFormulario;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu menuCadastro;
